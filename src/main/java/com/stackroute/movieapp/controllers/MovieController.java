@@ -1,5 +1,6 @@
 package com.stackroute.movieapp.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,11 @@ public class MovieController {
 	@GetMapping("/movie/{id}")
 	public ResponseEntity<?> getMovieById(@PathVariable int id) {
 		return new ResponseEntity<Optional<Movie>> (movieService.getMovieById(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("/movie/{title}")
+	public ResponseEntity<?> getMovieByTitle(@PathVariable String title) {
+		return new ResponseEntity<List<Movie>> (movieService.getMovieByTitle(title), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/movie/{id}")

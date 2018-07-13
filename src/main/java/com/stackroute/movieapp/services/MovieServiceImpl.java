@@ -1,5 +1,6 @@
 package com.stackroute.movieapp.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class MovieServiceImpl implements MovieService{
 	public Movie updateMovie(Movie movie, int id) {
 		movie.setId(id);
 		return movieRepository.save(movie);
+	}
+
+	@Override
+	public List<Movie> getMovieByTitle(String title) {
+		return movieRepository.getMovieByTitle(title);
 	}
 	
 	
