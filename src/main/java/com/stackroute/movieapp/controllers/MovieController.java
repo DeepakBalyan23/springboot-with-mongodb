@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.movieapp.domain.Movie;
+import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieapp.services.MovieServiceImpl;
 
 @RestController
@@ -31,7 +32,11 @@ public class MovieController {
 	
 	@PostMapping("/movie")
 	public ResponseEntity<?> saveMovie(@RequestBody Movie movie) {
-		return new ResponseEntity<Movie> (movieService.saveMovie(movie), HttpStatus.CREATED);
+		try {
+			return new ResponseEntity<Movie> (movieService.saveMovie(movie), HttpStatus.CREATED);
+		} catch (MovieAlreadyExistsException e) {
+			return null;
+		}
 	}
 	
 	@GetMapping("/movies")

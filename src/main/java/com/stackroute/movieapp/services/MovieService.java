@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.stackroute.movieapp.domain.Movie;
+import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 
 public interface MovieService {
 
-	public Movie saveMovie(Movie movie);
+	public Movie saveMovie(Movie movie) throws MovieAlreadyExistsException;
 	
 	public Iterable<Movie> getAllMovies();
 	

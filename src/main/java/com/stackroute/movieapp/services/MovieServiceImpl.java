@@ -1,5 +1,6 @@
 package com.stackroute.movieapp.services;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stackroute.movieapp.domain.Movie;
+import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieapp.repositories.MovieRepository;
 
 @Service
@@ -22,7 +24,15 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public Movie saveMovie(Movie movie) {
+	public Movie saveMovie(Movie movie) throws MovieAlreadyExistsException {
+		Iterable<Movie> movies= getAllMovies();
+        Iterator<Movie> iterator = movies.iterator();
+        while(iterator.hasNext()) {
+            Movie m = iterator.next();
+            if(movie.equals(m)) {
+                throw new MovieAlreadyExistsException("Movie already exists");
+            }
+        }
 		return movieRepository.save(movie);
 		
 	}
