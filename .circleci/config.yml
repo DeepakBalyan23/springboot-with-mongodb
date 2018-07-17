@@ -39,7 +39,7 @@ jobs:
 
       # run tests!
      
-      - run: mvn clean integration-test
+      - run: mvn integration-test
 
 #      -run:
 #          name: Send to CodeCov
