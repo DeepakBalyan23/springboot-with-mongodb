@@ -18,13 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.stackroute.movieapp.domain.Movie;
 import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieapp.services.MovieServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/v1")
 public class MovieController {
 
 	private MovieServiceImpl movieService;
-	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	@Autowired
+	private Movie movieProperties;
 	@Autowired
 	MovieController(MovieServiceImpl movieService){
 		this.movieService = movieService;
@@ -41,6 +45,11 @@ public class MovieController {
 	
 	@GetMapping("/movies")
 	public ResponseEntity<?> getAllMovies() {
+		
+	    logger.info(movieProperties.getTitle());
+        logger.info(movieProperties.getYear());
+        logger.warn("This is a warn message");
+        logger.error("This is an error message");
 		return new ResponseEntity<Iterable<Movie>> (movieService.getAllMovies(), HttpStatus.OK);
 	}
 	
@@ -49,10 +58,10 @@ public class MovieController {
 		return new ResponseEntity<Optional<Movie>> (movieService.getMovieById(id), HttpStatus.OK);
 	}
 	
-	@GetMapping("/movieByTitle/{title}")
+	/*@GetMapping("/movieByTitle/{title}")
 	public ResponseEntity<?> getMovieByTitle(@PathVariable String title) {
 		return new ResponseEntity<List<Movie>> (movieService.getMovieByTitle(title), HttpStatus.OK);
-	}
+	}*/
 	
 	@DeleteMapping("/movie/{id}")
 	public ResponseEntity<?> deleteMovieById(@PathVariable int id) {

@@ -49,7 +49,7 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
 	public void deleteMovie(int id) {
-		movieRepository.deleteById(id);;
+		movieRepository.deleteById(id);
 	}
 
 	@Override
@@ -58,10 +58,10 @@ public class MovieServiceImpl implements MovieService{
 		return movieRepository.save(movie);
 	}
 
-	@Override
+	/*@Override
 	public List<Movie> getMovieByTitle(String title) {
 		return movieRepository.getMovieByTitle(title);
-	}
+	}*/
 	
 	
 }
