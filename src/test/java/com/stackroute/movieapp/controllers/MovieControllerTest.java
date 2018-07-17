@@ -1,6 +1,6 @@
 package com.stackroute.movieapp.controllers;
 
-import com.stackroute.movieapp.controllers.*;
+import com.stackroute.movieapp.controllers.MovieController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

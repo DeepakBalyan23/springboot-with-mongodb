@@ -1,4 +1,3 @@
-spring:
 logging:
  file: logs/dev_app.log
  pattern:
@@ -6,5 +5,5 @@ logging:
    file: "%d %-5level [%thread] %logger : %msg%n"
  level:
    org.springframework.web: DEBUG
-   com.stackroute.controllers: DEBUG
+   com.stackroute.movieapp.controllers: DEBUG
    org.hibernate: DEBUG
