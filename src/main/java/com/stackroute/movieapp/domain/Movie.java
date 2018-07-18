@@ -17,8 +17,9 @@ public class Movie {
 	public Movie() {
 		
 	}
-	public Movie(String title, String imdbId, String poster, String year) {
+	public Movie(int id, String title, String imdbId, String poster, String year) {
 		super();
+		this.id=id;
 		this.title = title;
 		this.imdbId = imdbId;
 		this.poster = poster;

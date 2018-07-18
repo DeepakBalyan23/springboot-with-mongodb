@@ -37,9 +37,10 @@ public class MovieControllerTest {
     }
     
     @Test
-    public void getAllMovies() throws Exception{
+    public void getAllMoviesTest() throws Exception{
         when(movieService.getAllMovies()).thenReturn(null);
         movieMockMvc.perform(get("/api/v1/movies"))
-				.andExpect(status().isOk());
+				.andExpect(status().isOk())
+				.andExpect(content().string(""));
     }
 }
