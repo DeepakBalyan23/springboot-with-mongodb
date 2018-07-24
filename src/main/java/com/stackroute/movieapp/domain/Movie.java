@@ -55,11 +55,13 @@ public class Movie {
 	public void setYear(String year) {
 		this.year = year;
 	}
-	
 	@Override
 	public String toString() {
-		return "Movie [title=" + title + ", imdbId=" + imdbId + ", poster=" + poster + ", year=" + year + "]";
+		return "Movie [id=" + id + ", title=" + title + ", imdbId=" + imdbId + ", poster=" + poster + ", year=" + year
+				+ "]";
 	}
+	
+	
 	
 	
 }
